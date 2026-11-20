@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle Nest</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f4;
+            color: #163020;
+            padding: 35px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* OLED Dark Mode */
+        body.dark-mode {
+            background-color: #050a07;
+            color: #e6f2ec;
+        }
+
+        /* Container Card Matching Screenshot */
+        .theme-card {
+            background-color: #ffffff;
+            border: 1.5px solid #4ea377;
+            border-radius: 14px;
+            padding: 36px 40px;
+            max-width: 780px;
+            width: 100%;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+
+        body.dark-mode .theme-card {
+            background-color: #0d1a13;
+            border-color: #2c6648;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+        }
+
+        .theme-card h1 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #163020;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .theme-card h1 {
+            color: #8ce0b3;
+        }
+
+        .active-label {
+            font-size: 14.5px;
+            color: #3a4f43;
+            margin-bottom: 18px;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .active-label {
+            color: #a8c7b6;
+        }
+
+        /* Buttons Row */
+        .btn-row {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 24px;
+        }
+
+        .theme-btn {
+            background-color: #2c6648;
+            color: #ffffff;
+            border: none;
+            padding: 11px 20px;
+            border-radius: 7px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s ease, transform 0.15s ease;
+        }
+
+        .theme-btn:hover {
+            background-color: #1d422e;
+            transform: translateY(-1px);
+        }
+
+        /* Horizontal Divider Line */
+        .divider {
+            border: none;
+            border-top: 1.5px solid #4ea377;
+            margin-bottom: 22px;
+        }
+
+        body.dark-mode .divider {
+            border-top-color: #2c6648;
+        }
+
+        .description-text {
+            font-size: 14.5px;
+            color: #163020;
+            line-height: 1.6;
+            transition: color 0.3s ease;
+        }
+
+        body.dark-mode .description-text {
+            color: #d4e8dd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="theme-card">
+        <h1>🧩 Puzzle Nest</h1>
+
+        <div class="active-label" id="themeStatus">Active Theme: Eco Light Mode</div>
+
+        <div class="btn-row">
+            <button class="theme-btn" onclick="setLightMode()">☀ Eco Light Mode</button>
+            <button class="theme-btn" onclick="setDarkMode()">🌙 OLED Dark Mode</button>
+        </div>
+
+        <hr class="divider">
+
+        <p class="description-text" id="themeDesc">
+            Switching to OLED Dark Mode reduces display power consumption by up to 40% while solving your Puzzle Nest challenges.
+        </p>
+    </div>
+
+    <script>
+        function setLightMode() {
+            document.body.classList.remove('dark-mode');
+            document.getElementById('themeStatus').innerText = 'Active Theme: Eco Light Mode';
+        }
+
+        function setDarkMode() {
+            document.body.classList.add('dark-mode');
+            document.getElementById('themeStatus').innerText = 'Active Theme: OLED Dark Mode';
+        }
+    </script>
+
+</body>
+</html>
